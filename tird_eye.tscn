@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d221wpv3jxab5"]
+
+[ext_resource type="PackedScene" uid="uid://bsq86uxvim7vu" path="res://tird_eye.glb" id="1_4wubg"]
+[ext_resource type="Material" uid="uid://ddp0vch000q0r" path="res://gobot_celshaded12.tres" id="2_mwpd8"]
+
+[node name="tird_eye" instance=ExtResource("1_4wubg")]
+
+[node name="サードアイ" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_mwpd8")

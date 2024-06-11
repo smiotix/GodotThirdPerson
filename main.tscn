@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://4sfhpsiidoeo"]
+
+[ext_resource type="Script" path="res://third_person.gd" id="1_2wgax"]
+[ext_resource type="PackedScene" uid="uid://b1rn0s3p4od7v" path="res://koishi_01_godot.tscn" id="1_y6okv"]
+[ext_resource type="Texture2D" uid="uid://ddqknstly5riv" path="res://PavingStones126A_2K-PNG_AmbientOcclusion.png" id="3_8ghig"]
+[ext_resource type="Script" path="res://camera_shaft.gd" id="4_hrl3p"]
+[ext_resource type="Texture2D" uid="uid://cf05hvaar3jcp" path="res://Epic_BlueSunset_EquiRect_flat.png" id="5_apwje"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xgf6"]
+height = 2.04442
+
+[sub_resource type="BoxMesh" id="BoxMesh_t3tg8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxtuq"]
+albedo_texture = ExtResource("3_8ghig")
+uv1_scale = Vector3(400, 400, 400)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps8ya"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eafpu"]
+panorama = ExtResource("5_apwje")
+
+[sub_resource type="Sky" id="Sky_s0ulh"]
+sky_material = SubResource("PanoramaSkyMaterial_eafpu")
+
+[sub_resource type="Environment" id="Environment_l5jrg"]
+background_mode = 2
+sky = SubResource("Sky_s0ulh")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0qaee"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Koishi" type="CharacterBody3D" parent="."]
+script = ExtResource("1_2wgax")
+
+[node name="koishi01godot" parent="Koishi" instance=ExtResource("1_y6okv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Koishi"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84668, 0)
+shape = SubResource("CapsuleShape3D_7xgf6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -500, 0)
+mesh = SubResource("BoxMesh_t3tg8")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxtuq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ps8ya")
+
+[node name="Camera_Shaft" type="Node3D" parent="."]
+script = ExtResource("4_hrl3p")
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Shaft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l5jrg")
+camera_attributes = SubResource("CameraAttributesPractical_0qaee")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 31.1987, 0)
+light_energy = 0.6
+shadow_enabled = true

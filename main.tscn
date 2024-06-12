@@ -26,6 +26,9 @@ sky_material = SubResource("PanoramaSkyMaterial_eafpu")
 [sub_resource type="Environment" id="Environment_l5jrg"]
 background_mode = 2
 sky = SubResource("Sky_s0ulh")
+ssao_enabled = true
+ssao_intensity = 16.0
+ssao_power = 0.568394
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0qaee"]
 

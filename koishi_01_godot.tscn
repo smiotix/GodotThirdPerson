@@ -125,7 +125,7 @@ states/idle/position = Vector2(442, 56)
 states/jump/node = SubResource("AnimationNodeAnimation_xqoqp")
 states/jump/position = Vector2(674, 56)
 states/run/node = SubResource("AnimationNodeAnimation_4dkik")
-states/run/position = Vector2(442, 156)
+states/run/position = Vector2(457, 159)
 transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_uqj3t"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_jpqjb"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_eh8o6"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_g2lxp"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_pmq2c"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_favte"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uac1r"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_bfwbs"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_hrevo"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_e81fn"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_tcej4"), "run", "falling", SubResource("AnimationNodeStateMachineTransition_sjupf"), "idle", "falling", SubResource("AnimationNodeStateMachineTransition_87haj"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_e7nn0"), "falling", "run", SubResource("AnimationNodeStateMachineTransition_reh2r")]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vs1pd"]

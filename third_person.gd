@@ -99,12 +99,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and is_on_floor() and animstate != "jump" and animstate != "falling" and animstate != "attack":
 		state_machine.travel("attack")
 		attack_flag = true
-	print(current_position)
+	#print(current_position)
 	if animstate == "attack":
 		velocity = Vector3.ZERO
 		if current_position > 0.8 and attack_flag:
 			attack_flag = false
-			var effect_resource = preload("res://effect/sword.efkefc")
+			var effect_resource = preload("res://effect/sword02.efkefc")
 			var emitter = EffekseerEmitter3D.new()
 			emitter.set_effect(effect_resource)
 			emitter.transform.origin = EffecPos.transform.origin

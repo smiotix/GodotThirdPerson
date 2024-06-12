@@ -219,3 +219,6 @@ bone_idx = 31
 
 [node name="garber" parent="Armature/GeneralSkeleton/BoneAttachment3D2" index="0" instance=ExtResource("23_gr8lc")]
 transform = Transform3D(-0.0280534, 0.105272, 0.487986, 0.0601526, -0.484482, 0.107974, 0.495575, 0.0647654, 0.014518, 0.395469, 0.172944, 0.067909)
+
+[node name="EffecPos" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04002, 1.09757)

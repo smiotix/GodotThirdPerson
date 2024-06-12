@@ -10,6 +10,7 @@ var animstate = null
 
 # カメラノード
 var camera_node: Node3D
+var EffecPos: Node3D
 
 # 移動とカメラ回転の速度
 var move_speed: float = 10.0
@@ -21,6 +22,7 @@ var gravity = Vector3.DOWN * 9.8
 # ジョイスティックのデッドゾーン
 var deadzone: float = 0.2
 var move_direction: Vector3 = Vector3.ZERO
+var attack_flag = false;
 
 # ジャンプ力と空中でのジャンプ可能回数
 #var jump_force: float = 20.0
@@ -31,6 +33,7 @@ func _ready():
 	camera_node = get_node("../Camera_Shaft")
 	animation_tree = get_node("koishi01godot/Armature/AnimationTree")
 	state_machine = animation_tree.get("parameters/playback")
+	EffecPos = get_node("koishi01godot/EffecPos")
 func _physics_process(delta: float) -> void:
 	# ジョイスティックの入力を取得
 	var joystick_left_input = Vector2(
@@ -95,9 +98,19 @@ func _physics_process(delta: float) -> void:
 		state_machine.travel("idle")
 	if Input.is_action_just_pressed("attack") and is_on_floor() and animstate != "jump" and animstate != "falling" and animstate != "attack":
 		state_machine.travel("attack")
-	#print(current_position)
+		attack_flag = true
+	print(current_position)
 	if animstate == "attack":
 		velocity = Vector3.ZERO
+		if current_position > 0.8 and attack_flag:
+			attack_flag = false
+			var effect_resource = preload("res://effect/sword.efkefc")
+			var emitter = EffekseerEmitter3D.new()
+			emitter.set_effect(effect_resource)
+			emitter.transform.origin = EffecPos.transform.origin
+			emitter.transform.basis = EffecPos.transform.basis
+			emitter.play()
+			add_child(emitter)			
 	move_and_slide()
 
 	# カメラの回転処理

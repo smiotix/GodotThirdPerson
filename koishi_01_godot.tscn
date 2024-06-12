@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b1rn0s3p4od7v"]
+[gd_scene load_steps=46 format=3 uid="uid://b1rn0s3p4od7v"]
 
 [ext_resource type="PackedScene" uid="uid://dybgcdvjm5edi" path="res://koishi01godot.glb" id="1_vg8p5"]
 [ext_resource type="Material" uid="uid://b8b68mxq2pjg7" path="res://gobot_celshaded06.tres" id="2_4ubg4"]
@@ -9,7 +9,6 @@
 [ext_resource type="Animation" uid="uid://cis7darmeq72f" path="res://jump.tres" id="4_law47"]
 [ext_resource type="Material" uid="uid://b53gkusvs17ht" path="res://gobot_celshaded02.tres" id="4_wlyq4"]
 [ext_resource type="Material" uid="uid://we5aga4jpwbt" path="res://gobot_celshaded07.tres" id="5_oq26d"]
-[ext_resource type="Animation" uid="uid://vbgrg5yv08yb" path="res://falling.tres" id="5_xf4vy"]
 [ext_resource type="Material" uid="uid://b588y3333u4lt" path="res://gobot_celshaded08.tres" id="6_cwkap"]
 [ext_resource type="Animation" uid="uid://dsx4dhq54i4gm" path="res://attack.tres" id="6_ijnxu"]
 [ext_resource type="Animation" uid="uid://ba0ymx016ixid" path="res://new_idle.tres" id="7_40y8h"]
@@ -19,6 +18,7 @@
 [ext_resource type="Animation" uid="uid://bygaialgnu8mp" path="res://new_run.tres" id="9_aa7rj"]
 [ext_resource type="Material" uid="uid://ddp0vch000q0r" path="res://gobot_celshaded12.tres" id="9_ve0jd"]
 [ext_resource type="Material" uid="uid://dm8k6705jqfcv" path="res://gobot_celshaded01.tres" id="9_x6lib"]
+[ext_resource type="Animation" uid="uid://s37u6tflxvbl" path="res://new_falling.tres" id="9_xf8h4"]
 [ext_resource type="Material" uid="uid://nl08bfk82gd2" path="res://gobot_celshaded03.tres" id="10_cwn0x"]
 [ext_resource type="PackedScene" uid="uid://d221wpv3jxab5" path="res://tird_eye.tscn" id="17_ydjsa"]
 [ext_resource type="Script" path="res://third_eye.gd" id="18_symra"]
@@ -27,8 +27,8 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7wck"]
 animation = &"01/attack"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fsrn4"]
-animation = &"01/falling"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ru4lv"]
+animation = &"01/new_falling"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nbqw6"]
 animation = &"01/new_idle"
@@ -69,36 +69,6 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iw8jo"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_66vgt"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_453de"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlbyo"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"jump"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_slney"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2f8mu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"idle"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uac1r"]
 xfade_time = 0.2
 advance_mode = 2
@@ -119,26 +89,51 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"attack"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcej4"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sjupf"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_87haj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e7nn0"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_reh2r"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pxnp2"]
-states/Start/position = Vector2(201, 100)
+states/Start/position = Vector2(336, 56)
 states/attack/node = SubResource("AnimationNodeAnimation_n7wck")
 states/attack/position = Vector2(341, 226)
-states/falling/node = SubResource("AnimationNodeAnimation_fsrn4")
-states/falling/position = Vector2(674, 151)
+states/falling/node = SubResource("AnimationNodeAnimation_ru4lv")
+states/falling/position = Vector2(674, 184)
 states/idle/node = SubResource("AnimationNodeAnimation_nbqw6")
 states/idle/position = Vector2(442, 56)
 states/jump/node = SubResource("AnimationNodeAnimation_xqoqp")
 states/jump/position = Vector2(674, 56)
 states/run/node = SubResource("AnimationNodeAnimation_4dkik")
 states/run/position = Vector2(442, 156)
-transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_uqj3t"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_jpqjb"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_eh8o6"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_g2lxp"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_pmq2c"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_favte"), "run", "falling", SubResource("AnimationNodeStateMachineTransition_iw8jo"), "falling", "run", SubResource("AnimationNodeStateMachineTransition_66vgt"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_453de"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_qlbyo"), "idle", "falling", SubResource("AnimationNodeStateMachineTransition_slney"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_2f8mu"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uac1r"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_bfwbs"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_hrevo"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_e81fn")]
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_uqj3t"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_jpqjb"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_eh8o6"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_g2lxp"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_pmq2c"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_favte"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uac1r"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_bfwbs"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_hrevo"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_e81fn"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_tcej4"), "run", "falling", SubResource("AnimationNodeStateMachineTransition_sjupf"), "idle", "falling", SubResource("AnimationNodeStateMachineTransition_87haj"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_e7nn0"), "falling", "run", SubResource("AnimationNodeStateMachineTransition_reh2r")]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vs1pd"]
 _data = {
 "attack": ExtResource("6_ijnxu"),
-"falling": ExtResource("5_xf4vy"),
 "idle": ExtResource("3_o70sw"),
 "jump": ExtResource("4_law47"),
+"new_falling": ExtResource("9_xf8h4"),
 "new_idle": ExtResource("7_40y8h"),
 "new_jump": ExtResource("8_lgurs"),
 "new_run": ExtResource("9_aa7rj"),

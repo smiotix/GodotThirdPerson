@@ -102,7 +102,7 @@ func _physics_process(delta: float) -> void:
 	#print(current_position)
 	if animstate == "attack":
 		velocity = Vector3.ZERO
-		if current_position > 0.8 and attack_flag:
+		if current_position > 0.7 and attack_flag:
 			attack_flag = false
 			var effect_resource = preload("res://effect/sword02.efkefc")
 			var emitter = EffekseerEmitter3D.new()

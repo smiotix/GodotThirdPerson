@@ -57,11 +57,12 @@ func _physics_process(delta: float) -> void:
 		if move_direction != Vector3.ZERO:
 			var corrected_direction = move_direction.rotated(Vector3.UP, PI)
 			animstate = state_machine.get_current_node()
-			if animstate != "run":
+			if animstate != "run" and animstate != "attack":
 				state_machine.travel("run")
-			look_at(global_transform.origin + corrected_direction, Vector3.UP)		
-		velocity = move_direction * move_speed + gravity * delta
-	elif animstate != "jump" and is_on_floor():
+			look_at(global_transform.origin + corrected_direction, Vector3.UP)
+			if animstate != "attack":
+				velocity = move_direction * move_speed + gravity * delta
+	elif animstate != "jump" and is_on_floor() and animstate != "attack":
 		animstate = state_machine.get_current_node()
 		if animstate != "idle":
 			state_machine.travel("idle")
@@ -89,6 +90,14 @@ func _physics_process(delta: float) -> void:
 		animstate = state_machine.get_current_node()
 		if animstate != "jump":
 			state_machine.travel("falling")
+	animstate = state_machine.get_current_node()
+	if animstate == "attack" and current_position > 1.5333:
+		state_machine.travel("idle")
+	if Input.is_action_just_pressed("attack") and is_on_floor() and animstate != "jump" and animstate != "falling" and animstate != "attack":
+		state_machine.travel("attack")
+	#print(current_position)
+	if animstate == "attack":
+		velocity = Vector3.ZERO
 	move_and_slide()
 
 	# カメラの回転処理

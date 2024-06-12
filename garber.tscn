@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dahpie2e5otoy"]
+
+[ext_resource type="PackedScene" uid="uid://bkiiun68nymng" path="res://garber.glb" id="1_ici0g"]
+[ext_resource type="Material" uid="uid://cj1cd5p2j5ni8" path="res://gobot_celshaded13.tres" id="2_5xycu"]
+[ext_resource type="Material" uid="uid://yrk2qk6cvstj" path="res://gobot_celshaded14.tres" id="3_67n58"]
+
+[node name="garber" instance=ExtResource("1_ici0g")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5xycu")
+
+[node name="立方体" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_67n58")

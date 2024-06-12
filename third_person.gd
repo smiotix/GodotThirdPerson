@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		if animstate != "idle":
 			state_machine.travel("idle")
 		velocity = Vector3(0, velocity.y, 0)  + gravity * delta
-	elif animstate == "jump" and current_position > 1.92:
+	elif animstate == "jump" and current_position > 0.85:
 		animstate = state_machine.get_current_node()
 		if animstate != "falling":
 			state_machine.travel("falling")

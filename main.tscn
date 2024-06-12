@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cf05hvaar3jcp" path="res://Epic_BlueSunset_EquiRect_flat.png" id="5_apwje"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xgf6"]
-height = 2.04442
+height = 1.87424
 
 [sub_resource type="BoxMesh" id="BoxMesh_t3tg8"]
 
@@ -37,7 +37,7 @@ script = ExtResource("1_2wgax")
 [node name="koishi01godot" parent="Koishi" instance=ExtResource("1_y6okv")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Koishi"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84668, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0504045, 0.827466, 0.0010978)
 shape = SubResource("CapsuleShape3D_7xgf6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
